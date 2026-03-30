@@ -10,7 +10,7 @@ public class Rental
     public Medium Item { get; set; }
     public DateOnly RentalDate { get; set; }
     public DateOnly DueDate { get; set; }
-    public DateOnly ReturnDate { get; set; }
+    public DateOnly? ReturnDate { get; set; }
     public bool IsDue { get; set; } =  false;
 
     public Rental(Medium item, DateOnly rentalDate, DateOnly dueDate)
