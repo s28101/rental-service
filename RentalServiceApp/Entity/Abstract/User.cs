@@ -1,4 +1,4 @@
-﻿namespace RentalServiceApp.Entity;
+﻿namespace RentalServiceApp.Entity.Abstract;
 
 public abstract class User
 {

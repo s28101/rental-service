@@ -1,4 +1,4 @@
-﻿namespace RentalServiceApp.Entity;
+﻿namespace RentalServiceApp.Entity.Enum;
 
 public enum BookCover
 {

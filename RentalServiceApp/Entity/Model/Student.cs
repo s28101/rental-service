@@ -1,4 +1,6 @@
-﻿namespace RentalServiceApp.Entity;
+﻿using RentalServiceApp.Entity.Abstract;
+
+namespace RentalServiceApp.Entity.Model;
 
 public class Student : User
 {

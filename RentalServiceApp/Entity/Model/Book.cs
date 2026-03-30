@@ -1,4 +1,7 @@
-﻿namespace RentalServiceApp.Entity;
+﻿using RentalServiceApp.Entity.Abstract;
+using RentalServiceApp.Entity.Enum;
+
+namespace RentalServiceApp.Entity.Model;
 
 public class Book : Medium
 {
