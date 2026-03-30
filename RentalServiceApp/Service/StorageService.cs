@@ -24,7 +24,7 @@ public class StorageService
         Console.WriteLine($"There are {getNotReturnedNotOverdueRentals().Count} rentals that have a chance to be returned on time");
     }
     
-    public static void addUser(User user)
+    public static void add(User user)
     {
         Users.Add(user.Id, user);
     }
@@ -59,7 +59,7 @@ public class StorageService
           return result;
       }
   
-    public static void addRental(Rental rental){
+    public static void add(Rental rental){
         Rentals.Add(rental.Id, rental);
     }
     
@@ -126,7 +126,7 @@ public class StorageService
         return getRentalsFiltered(filter);
     }
     
-    public static void addItem(Medium item)
+    public static void add(Medium item)
         {
             Items.Add(item.Id, item);
         }

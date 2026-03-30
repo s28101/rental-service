@@ -5,7 +5,7 @@ namespace RentalServiceApp.Service;
 
 public class RentingService
 {
-    public bool rent(User user, Medium item, DateOnly rentDate)
+    public static Rental? rent(User user, Medium item, DateOnly rentDate)
     {
         if (item == null)
         {
@@ -15,22 +15,24 @@ public class RentingService
         if (!item.IsAvailable)
         {
             Console.WriteLine("Item is not available");
-            return false;
+            return null;
         }
 
         if (user.Rented >= user.RentingLimit)
         {
             Console.WriteLine("Renting limit exceeded");
-            return false;
+            return null;
         }
         
+        item.IsAvailable = false;
+        user.Rented++;
         var rental = new Rental(user, item, rentDate, rentDate.AddDays(user.RentingLimit * 7));
-        StorageService.addRental(rental);
+        StorageService.add(rental);
         
-        return true;
+        return rental;
     }
     
-    public bool returnItem(Rental rental)
+    public static bool returnItem(Rental rental)
     {
         if (rental == null)
         {
@@ -69,7 +71,7 @@ public class RentingService
         return true;
     }
     
-    public bool returnItem(Rental rental, DateOnly date)
+    public static bool returnItem(Rental rental, DateOnly date)
     {
         if (rental == null)
         {
@@ -108,12 +110,12 @@ public class RentingService
         return true;
     }
 
-    private void applyPenalty(User user)
+    private static void applyPenalty(User user)
     {
         user.RentingLimit--;
     }
 
-    private void liftPenalty(User user)
+    private static void liftPenalty(User user)
     {
         user.RentingLimit++;
     }
