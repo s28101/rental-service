@@ -2,7 +2,6 @@
 
 namespace RentalServiceApp.Entity.Model;
 
-[Serializable]
 public class Rental
 {   
     private static long _id = 0;
@@ -14,12 +13,9 @@ public class Rental
     public DateOnly? ReturnDate { get; set; }
     public bool IsDue { get => (ReturnDate == null)? DateOnly.FromDateTime(DateTime.Now) > DueDate : ReturnDate > DueDate; set; } =  false;
 
-    public Rental(User user, Medium item, DateOnly rentalDate, DateOnly dueDate)
+    public Rental(Medium item, DateOnly rentalDate, DateOnly dueDate)
     {
-        Reciever =  user;
-        user.Rented++;
         Item = item;
-        item.IsAvailable = false;
         RentalDate = rentalDate;
         DueDate = dueDate;
     }
