@@ -10,6 +10,19 @@ public class StorageService
     public static Dictionary<long, User> Users { get; private set; } = new ();
     public static Dictionary<long, Rental> Rentals { get; private set; } = new ();
     public static Dictionary<long, Medium> Items { get; private set; } = new ();
+
+    public void generateShortSummary()
+    {
+        Console.WriteLine($"There currently are {Users.Count} users: {GetStudents().Count} Students and {GetEmployees().Count} Employees\n");
+        Console.WriteLine($"Out of our {Items.Count} items there are: {getBooks().Count} Books, {getAudiobooks().Count} Audiobooks, and {getMovies().Count} Movies\n");
+        Console.WriteLine($"{getNotRentableItems().Count} of items is under maintenance");
+        Console.WriteLine($"Out of {Items.Count - getNotRentableItems().Count} rentable items {getAvailableItems().Count} are available\n");
+        Console.WriteLine($"There are {Rentals.Count} records of rentals");
+        Console.WriteLine($"{getOverdueRentals().Count} of rentals are overdue");
+        Console.WriteLine($"out of which {getNotReturnedOverdueRentals().Count} are yet to be returned");
+        Console.WriteLine($"{getReturnedOnTimeRentals().Count} of rentals were returned on time");
+        Console.WriteLine($"There are {getNotReturnedNotOverdueRentals().Count} rentals that have a chance to be returned on time");
+    }
     
     public static void addUser(User user)
     {
@@ -143,6 +156,12 @@ public class StorageService
     public List<Medium> getNotAvailableItems()
     {
         Predicate<Medium> filter = item => !item.IsAvailable;
+        return getItemsFiltered(filter);
+    }
+
+    public List<Medium> getNotRentableItems()
+    {
+        Predicate<Medium> filter = item => !item.IsRentable;
         return getItemsFiltered(filter);
     }
 
