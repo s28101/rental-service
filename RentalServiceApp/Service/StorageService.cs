@@ -145,7 +145,50 @@ public class StorageService
         Predicate<Medium> filter = item => !item.IsAvailable;
         return getItemsFiltered(filter);
     }
+
+    public List<Audiobook> getAudiobooks()
+    {
+        List<Audiobook> result = new List<Audiobook>();
+  
+        foreach (Medium item in Items.Values)
+        {
+            if (item is Audiobook audiobook)
+            {
+                result.Add(audiobook);
+            }
+        }
+          
+        return  result;
+    }
     
+    public List<Book> getBooks()
+    {
+        List<Book> result = new List<Book>();
+  
+        foreach (Medium item in Items.Values)
+        {
+            if (item is Book book)
+            {
+                result.Add(book);
+            }
+        }
+          
+        return  result;
+    }
     
+    public List<Movie> getMovies()
+    {
+        List<Movie> result = new List<Movie>();
+  
+        foreach (Medium item in Items.Values)
+        {
+            if (item is Movie movie)
+            {
+                result.Add(movie);
+            }
+        }
+          
+        return  result;
+    }
 
 }
