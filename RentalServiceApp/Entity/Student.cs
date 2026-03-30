@@ -19,8 +19,12 @@ public class Student : User
 
     public Student(string name, string surname, string email, DateTime dob, int semesters) : base(name, surname, email, dob)
     {
-        _semesters = semesters;
+        Semesters = semesters;
+        RentingLimit = 3;
     }
-    
-    
+
+    public override string ToString()
+    {
+        return base.ToString() +   $", Semesters: {Semesters}";
+    }
 }

@@ -20,7 +20,11 @@ public class Employee : User
     public Employee(string name, string surname, string email, DateTime dob, double salary) : base(name, surname, email, dob)
     {
         Salary = salary;
+        RentingLimit = 5;
     }
 
-    //todo to strings overrides
+    public override string ToString()
+    {
+        return base.ToString() +  $", Salary: {Salary}";
+    }
 }

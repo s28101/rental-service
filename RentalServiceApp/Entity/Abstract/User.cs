@@ -66,6 +66,8 @@ public abstract class User
     
     public int Age => DateTime.Now.Year - DoB.Year;
     
+    protected int RentingLimit { get; set; }
+    
     public static void setStaticId(int id)
     {
         _id = id;
@@ -77,5 +79,10 @@ public abstract class User
         Surname = surname;
         Email = email;
         DoB = dob;
+    }
+
+    public override string ToString()
+    {
+        return $"ID: {Id}, Name: {Name}, Surname: {Surname},  Email: {Email}, ,Age: {Age}, DoB: {DoB}, Renting Limit: {RentingLimit}";
     }
 }
