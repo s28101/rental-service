@@ -2,6 +2,7 @@
 
 namespace RentalServiceApp.Entity.Model;
 
+[Serializable]
 public class Rental
 {   
     private static long _id = 0;

@@ -3,6 +3,7 @@ using RentalServiceApp.Entity.Enum;
 
 namespace RentalServiceApp.Entity.Model;
 
+[Serializable]
 public class Book : Medium
 {
     public string Author { get; set; }

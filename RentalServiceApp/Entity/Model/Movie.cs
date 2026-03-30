@@ -2,6 +2,7 @@
 
 namespace RentalServiceApp.Entity.Model;
 
+[Serializable]
 public class Movie : Medium
 {
     private int _duration;

@@ -2,6 +2,7 @@
 
 namespace RentalServiceApp.Entity.Model;
 
+[Serializable]
 public class Student : User
 {
     protected int _semesters;
