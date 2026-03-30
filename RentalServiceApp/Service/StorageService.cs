@@ -25,7 +25,28 @@ public class StorageService
         Items.Add(item.Id, item);
     }
 
-    
+    private List<Rental> getRentalsFiltered(Predicate<Rental> predicate)
+    {
+        var result = new List<Rental>();
+
+        foreach (Rental rental in Rentals.Values)
+        {
+            if (predicate(rental))
+            {
+                result.Add(rental);
+            }
+        }
+        
+        return result;
+    }
+
+    public List<Rental> getOverdueRentals()
+    {
+        Predicate<Rental> filter = rental => rental.IsDue;
+        
+        return getRentalsFiltered(filter);
+    }
+
     
 
 }
