@@ -1,4 +1,7 @@
-﻿namespace RentalServiceApp.Entity.Abstract;
+﻿using RentalServiceApp.Entity.Model;
+using RentalServiceApp.Service;
+
+namespace RentalServiceApp.Entity.Abstract;
 
 public abstract class User
 {
@@ -66,7 +69,8 @@ public abstract class User
     
     public int Age => DateTime.Now.Year - DoB.Year;
     
-    protected int RentingLimit { get; set; }
+    public int RentingLimit { get; set; }
+    public int Rented { get; set; } = 0;
     
     public static void setStaticId(int id)
     {

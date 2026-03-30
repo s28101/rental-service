@@ -11,12 +11,15 @@ public class Rental
     public Medium Item { get; set; }
     public DateOnly RentalDate { get; set; }
     public DateOnly DueDate { get; set; }
-    public DateOnly ReturnDate { get; set; }
-    public bool IsDue { get; set; } =  false;
+    public DateOnly? ReturnDate { get; set; }
+    public bool IsDue { get => (ReturnDate == null)? DateOnly.FromDateTime(DateTime.Now) > DueDate : ReturnDate > DueDate; set; } =  false;
 
-    public Rental(Medium item, DateOnly rentalDate, DateOnly dueDate)
+    public Rental(User user, Medium item, DateOnly rentalDate, DateOnly dueDate)
     {
+        Reciever =  user;
+        user.Rented++;
         Item = item;
+        item.IsAvailable = false;
         RentalDate = rentalDate;
         DueDate = dueDate;
     }
