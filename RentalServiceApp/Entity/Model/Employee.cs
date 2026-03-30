@@ -2,7 +2,7 @@
 
 namespace RentalServiceApp.Entity.Model;
 
-[Serializable]
+
 public class Employee : User
 {   
     protected double _salary;

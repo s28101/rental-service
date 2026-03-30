@@ -2,7 +2,7 @@
 
 namespace RentalServiceApp.Entity.Model;
 
-[Serializable]
+
 public class Audiobook : Medium
 {
     private int _duration;
